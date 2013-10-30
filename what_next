@@ -1,0 +1,7 @@
+### NAME -> FACEBOOK USERNAME RESOLUTION ###
+
+b) Think we can initially do this via URLs, as discooorsed.
+
+b) How are usernames on a facebook search delimited? Consistent format in HTML/XML we can feed through XPath?
+p) Nokogiri allows selection of URLs from div elements so should be easy
+    b) That's that sorted then ;p
