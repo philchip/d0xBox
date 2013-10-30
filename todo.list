@@ -1,0 +1,34 @@
+### TO-DO LIST ALPHA 0.0.0.1 ALPHA ALPHA: AUTISTIC ALVIN ###
+
+b) VPN/Proxy SUPPORT
+p) Specify which site to search --DONE! 30/10/13
+b) Write a man page we can update on the fly... how we going to go about this?
+    Shouldn't just be called from a method... will get bloated as fuck.
+b) GUI implementation... without breaking all the CLI-based code.
+b)******** Alias resolution... from name -> username. Grab a facebook page name? That's potentially an email address, a steam account, etc..
+
+---Potential Scrape Sources---
+b) Facebook
+b) Google Images; Reverse Search; Regular Search
+    p) Plus; JewTube
+b) Twitter
+b) Phone directory -- which site hosts these?
+    p) Pipl.com (^) <-Awesome.
+b) Steam Profiles
+b) Censuses?! (Censi?)
+
+---Search parameters? How do we filter results?---
+
+p) regex
+p) Sort by number of matches on page (several pieces of information entered)
+p) Have and exclude function using switch (-e "perky") # b) use hashes as method parameters for this. 
+                                                            example up in d0xBox.rb
+
+
+---In real terms, this means:---
+b) Learning Nokogiri 
+b) Learning Ruby as we go
+b) What APIs are we going to be looking at here?
+p) Learning how to build a GUI
+p) Learning to use Ruby -> Android
+b) Can we pull this off solely in one language? God, I hope so ;p
