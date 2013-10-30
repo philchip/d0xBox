@@ -5,3 +5,8 @@ b) Think we can initially do this via URLs, as discooorsed.
 b) How are usernames on a facebook search delimited? Consistent format in HTML/XML we can feed through XPath?
 p) Nokogiri allows selection of URLs from div elements so should be easy
     b) That's that sorted then ;p
+
+p) <div class="instant_search_title fsl fwb fcb">   div tag that holds username URL.
+    p) CSS file that handles that element --> -99Bl-8Owwh.css
+p) How to generate a search?
+
