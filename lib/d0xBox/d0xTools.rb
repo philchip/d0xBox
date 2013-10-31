@@ -15,7 +15,7 @@ module D0xTools
 	
 	def self.bbb_sl(s)
 		s.each_char { |c| putc c; sleep 0.025; STDOUT.flush }
-		prints "\n"
+		print "\n"
 	end
 	
 	def self.clean_text(t) # cleans a string of tags

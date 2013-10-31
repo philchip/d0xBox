@@ -6,14 +6,8 @@ require_relative './d0xBox/d0xHelp'
 $targets = ['Facebook', 'Google', 'Twitter', 'Website', 'Images']
 $targets_short = ['F', 'G', 'T', 'W', 'I']
 
-class D0xClient(*targets)
-  def initialize
-    D0xTools::bbb_sl "New client initialised. Targets: #{targets}"
-  end
-end
-
-
 def start
+=begin
   while true
     case gets.chomp.downcase
     
@@ -36,23 +30,28 @@ def start
       puts 'Command not recognised.'
     end
   end
-  
-  print <<stop
-     _ _____     ______  _____      
-    | |  _  |    | ___ \|  _  |     
-  __| | |/' |_  _| |_/ /| |/' |_  __
- / _` |  /| \ \/ / ___ \|  /| \ \/ /
-| (_| \ |_/ />  <| |_/ /\ |_/ />  < 
- \__,_|\___//_/\_\____/  \___//_/\_\ 0.1
-stop
-  
-  D0xTools::bbb "        Not yet implemented(TM)"
+=end
+	puts <<-eos
+
+	         8I          dP"""88""""""Y8,              
+	         8I          Yb,  88      `8b              
+	         8I           `"  88      ,8P              
+	         8I               88aaaad8P"               
+	   ,gggg,8I     ,gg,   ,gg88""""Y8ba     ,gg,   ,gg
+	  dP"  "Y8I    d8""8b,dP" 88      `8b   d8""8b,dP" 
+	 i8'    ,8I   dP   ,88"   88      ,8P  dP   ,88"   
+	,d8,   ,d8b,,dP  ,dP"Y8,  88_____,d8',dP  ,dP"Y8,  
+	P"Y8888P"`Y88"  dP"   "Y888888888P"  8"  dP"   "Y8   V0.1                                           
+                                                
+	eos
+ 
+
+  D0xTools::bbb "        				Not yet implemented(TM)"
   D0xTools::bbb_sl "Welcome to d0xB0x. Enter start-up command, or type \'help\'."
   input = gets.chomp
   
   print'DEBUG: QUITTING'
 end
-
 =begin MOVE ME TO DEDICATED d0xHelp.rb
 def help(s)
   case s
@@ -70,8 +69,7 @@ def spawn_client
   D0xTools::bbb_sl 'Enter target(s): '
   targets = gets.chomp
   
-  unless $targets.include? targets || # checkme
-  $targets_short.include? targets
+  unless $targets.include? targets then
     target_valid = false
   end
   
