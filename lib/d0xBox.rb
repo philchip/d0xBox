@@ -23,6 +23,16 @@ stop
   input = gets.chomp
 end
 
+def help(s)
+  case s
+  when 'self'
+    puts 'PRINT GENERAL HELPFILE'
+  when 'other methods'
+    puts 'METHOD SPECIFIC HELPFILES'
+  else
+    puts 'Unknown help parameter. Usage: help(command) or help'
+  end
+end
 
 if __FILE__ == $PROGRAM_NAME ### Is there a better way to implement main in Ruby?
   start
