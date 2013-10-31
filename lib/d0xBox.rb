@@ -16,9 +16,9 @@ def start
  / _` |  /| \ \/ / ___ \|  /| \ \/ /
 | (_| \ |_/ />  <| |_/ /\ |_/ />  < 
  \__,_|\___//_/\_\____/  \___//_/\_\ 0.1
-        Not yet Implemented(TM)
 stop
- 
+  
+  D0xWeb::bbb "        Not yet implemented(TM)"
   D0xWeb::bbb_sl "Welcome to d0xB0x. Enter start-up command, or type \'help\'."
   input = gets.chomp
 end
