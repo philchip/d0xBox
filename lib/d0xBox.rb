@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'nokogiri'
-require_relative './d0xBox/d0xWeb' # Really? You call that >clean?<
+require_relative './d0xBox/d0xTools' # Really? You call that >clean?<
 
 class D0xClient
   def initialize
