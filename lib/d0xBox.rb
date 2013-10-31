@@ -7,7 +7,7 @@ class D0xClient
   end
 end
 
-def main
+def start
   print <<stop
      _ _____     ______  _____      
     | |  _  |    | ___ \|  _  |     
@@ -15,8 +15,11 @@ def main
  / _` |  /| \ \/ / ___ \|  /| \ \/ /
 | (_| \ |_/ />  <| |_/ /\ |_/ />  < 
  \__,_|\___//_/\_\____/  \___//_/\_\ 0.1
- 
+        Not yet Implemented(TM)
 stop
+ 
+  D0xWeb::bbb_sl "Welcome to d0xB0x. Enter starting command, or type \'help\'."
+  input = gets.chomp
   
   
 end
