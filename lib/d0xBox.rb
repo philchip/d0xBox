@@ -2,8 +2,12 @@ require 'rubygems'
 require 'nokogiri'
 require_relative './d0xBox/d0xTools' # Really? You call that >clean?<
 
-class D0xClient
+$targets = ['Facebook', 'Google', 'Twitter', 'Website', 'Images']
+$targets_short = ['F', 'G', 'T', 'W', 'I']
+
+class D0xClient(*targets)
   def initialize
+    D0xTools::bbb_sl "New client initialised. Targets: #{target}"
   end
 end
 
@@ -23,6 +27,7 @@ stop
   input = gets.chomp
 end
 
+=begin MOVE ME TO DEDICATED d0xHelp.rb
 def help(s)
   case s
   when 'self'
@@ -31,6 +36,21 @@ def help(s)
     puts 'METHOD SPECIFIC HELPFILES'
   else
     puts 'Unknown help parameter. Usage: help(command) or help'
+  end
+end
+=end
+
+def spawn_client
+  D0xTools::bbb_sl 'Enter target: '
+  target = gets.chomp
+  
+  if target == 'valid'
+    client = new D0xClient(target)
+  elsif target == 'targets'
+    print 'targets'
+  else
+    puts 'Invalid target(s). Type \'targets\' for a list of targets to scrape.'
+    spawn_client
   end
 end
 
