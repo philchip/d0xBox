@@ -19,7 +19,7 @@ def start
         Not yet Implemented(TM)
 stop
  
-  D0xWeb::bbb_sl "Welcome to d0xB0x. Enter starting command, or type \'help\'."
+  D0xWeb::bbb_sl "Welcome to d0xB0x. Enter start-up command, or type \'help\'."
   input = gets.chomp
 end
 
