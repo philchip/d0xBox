@@ -7,6 +7,7 @@ class D0xClient
   end
 end
 
+
 def start
   print <<stop
      _ _____     ______  _____      
@@ -20,8 +21,11 @@ stop
  
   D0xWeb::bbb_sl "Welcome to d0xB0x. Enter starting command, or type \'help\'."
   input = gets.chomp
-  
-  
+end
+
+
+if __FILE__ == $PROGRAM_NAME ### Is there a better way to implement main in Ruby?
+  start
 end
 
 
