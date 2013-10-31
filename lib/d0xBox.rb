@@ -48,6 +48,7 @@ def start
 
   D0xTools::bbb "        				Not yet implemented(TM)"
   D0xTools::bbb_sl "Welcome to d0xB0x. Enter start-up command, or type \'help\'."
+  puts''
   input = gets.chomp
   
   print'DEBUG: QUITTING'
