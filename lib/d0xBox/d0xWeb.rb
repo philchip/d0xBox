@@ -12,6 +12,11 @@ module D0xWeb
 		print "\n\n"
 		sleep(2)
 	end
+	
+	def self.clean_text(t) # cleans a string of tags
+		t.gsub(/'<>'/,'')
+	end
+	
 
 	def self.page_search(p) # page_search text for a term
 		puts 'Yo. Enter search term: '
