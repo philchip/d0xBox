@@ -18,8 +18,8 @@ def start
  \__,_|\___//_/\_\____/  \___//_/\_\ 0.1
 stop
   
-  D0xWeb::bbb "        Not yet implemented(TM)"
-  D0xWeb::bbb_sl "Welcome to d0xB0x. Enter start-up command, or type \'help\'."
+  D0xTools::bbb "        Not yet implemented(TM)"
+  D0xTools::bbb_sl "Welcome to d0xB0x. Enter start-up command, or type \'help\'."
   input = gets.chomp
 end
 
