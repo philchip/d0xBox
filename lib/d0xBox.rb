@@ -15,9 +15,26 @@ end
 
 def start
   while true
-    exit(1) if gets.chomp.downcase = 'exit'
-    start if gets.chomp.downcase = 'restart'
-    d0xHelp::run if gets.chomp.downcase = 'help'
+    case gets.chomp.downcase
+    
+    when 'help'
+      D0xHelp::run
+      
+    when 'exit'
+      exit(1)
+      
+    when 'restart'
+      start
+      
+    when 'targets'
+      D0xTools::bbb_sl 'Potential targets:'
+      D0xTools::bbb_sl $targets.to_s # checkme
+      D0xTools::bbb_sl "These may be accessed using the following abbreviations:"
+      DoxTools::bbb_sl $targets_short.to_s
+      
+    else
+      puts 'Command not recognised.'
+    end
   end
   
   print <<stop
@@ -51,12 +68,15 @@ end
 
 def spawn_client
   D0xTools::bbb_sl 'Enter target(s): '
-  target = gets.chomp
+  targets = gets.chomp
   
-  if target == 'valid'
+  unless $targets.include? targets || # checkme
+  $targets_short.include? targets
+    target_valid = false
+  end
+  
+  if target_valid == true
     client = new D0xClient(*targets)
-  elsif target == 'targets'
-    print 'targets'
   else
     puts 'Invalid target(s). Type \'targets\' for a list of targets to scrape.'
     spawn_client
