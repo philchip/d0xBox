@@ -17,7 +17,7 @@ def start
   while true
     exit(1) if gets.chomp.downcase = 'exit'
     start if gets.chomp.downcase = 'restart'
-    help if gets.chomp.downcase = 'help'
+    d0xHelp::run if gets.chomp.downcase = 'help'
   end
   
   print <<stop
