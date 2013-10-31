@@ -92,7 +92,6 @@ module D0xWeb
 		bbb 'D0xWeb is a collection of tools to catalog and search webpages.'
 		bbb 'It may be used as a generic starting point for more complex scrapes, ' +
 		'and is often employed as part of more specialised search modules.'
-		print '\n\n'
 	end
 end
 
