@@ -3,7 +3,8 @@
 b) VPN/Proxy SUPPORT
 p) Specify which site to search --DONE! 30/10/13
 b) Write a man page we can update on the fly... how we going to go about this?
-    Shouldn't just be called from a method... will get bloated as fuck.
+    b) For now, going to write man functions within each module seperately. Can perhaps make a global
+        function that pulls them all in and consolidates them for browsing?
 b) GUI implementation... without breaking all the CLI-based code.
 b)******** Alias resolution... from name -> username. Grab a facebook page name? That's potentially an email address, a steam account, etc..
 
