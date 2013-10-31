@@ -1,18 +1,25 @@
 require 'rubygems'
 require 'nokogiri'
 require_relative './d0xBox/d0xTools' # Really? You call that >clean?<
+require_relative './d0xBox/d0xHelp'
 
 $targets = ['Facebook', 'Google', 'Twitter', 'Website', 'Images']
 $targets_short = ['F', 'G', 'T', 'W', 'I']
 
 class D0xClient(*targets)
   def initialize
-    D0xTools::bbb_sl "New client initialised. Targets: #{target}"
+    D0xTools::bbb_sl "New client initialised. Targets: #{targets}"
   end
 end
 
 
 def start
+  while true
+    exit(1) if gets.chomp.downcase = 'exit'
+    start if gets.chomp.downcase = 'restart'
+    help if gets.chomp.downcase = 'help'
+  end
+  
   print <<stop
      _ _____     ______  _____      
     | |  _  |    | ___ \|  _  |     
@@ -25,6 +32,8 @@ stop
   D0xTools::bbb "        Not yet implemented(TM)"
   D0xTools::bbb_sl "Welcome to d0xB0x. Enter start-up command, or type \'help\'."
   input = gets.chomp
+  
+  print'DEBUG: QUITTING'
 end
 
 =begin MOVE ME TO DEDICATED d0xHelp.rb
@@ -41,11 +50,11 @@ end
 =end
 
 def spawn_client
-  D0xTools::bbb_sl 'Enter target: '
+  D0xTools::bbb_sl 'Enter target(s): '
   target = gets.chomp
   
   if target == 'valid'
-    client = new D0xClient(target)
+    client = new D0xClient(*targets)
   elsif target == 'targets'
     print 'targets'
   else
