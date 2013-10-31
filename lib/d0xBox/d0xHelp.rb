@@ -1,5 +1,5 @@
 module D0xHelp
   def run
-    puts'DEBUG:HELPFILE'
+  	print 'I am a collosal faggot.'
   end
 end

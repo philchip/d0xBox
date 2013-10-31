@@ -7,30 +7,6 @@ $targets = ['Facebook', 'Google', 'Twitter', 'Website', 'Images']
 $targets_short = ['F', 'G', 'T', 'W', 'I']
 
 def start
-=begin
-  while true
-    case gets.chomp.downcase
-    
-    when 'help'
-      D0xHelp::run
-      
-    when 'exit'
-      exit(1)
-      
-    when 'restart'
-      start
-      
-    when 'targets'
-      D0xTools::bbb_sl 'Potential targets:'
-      D0xTools::bbb_sl $targets.to_s # checkme
-      D0xTools::bbb_sl "These may be accessed using the following abbreviations:"
-      DoxTools::bbb_sl $targets_short.to_s
-      
-    else
-      puts 'Command not recognised.'
-    end
-  end
-=end
 	puts <<-eos
 
 	         8I          dP"""88""""""Y8,              
@@ -49,7 +25,7 @@ def start
   D0xTools::bbb "        				Not yet implemented(TM)"
   D0xTools::bbb_sl "Welcome to d0xB0x. Enter start-up command, or type \'help\'."
   puts''
-  input = gets.chomp
+  input_thread = Thread.new {watch_input}.join
   
   print'DEBUG: QUITTING'
 end
@@ -82,8 +58,35 @@ def spawn_client
   end
 end
 
-if __FILE__ == $PROGRAM_NAME ### Is there a better way to implement main in Ruby?
-  start
+def watch_input
+  loop do
+    case gets.chomp.downcase
+    
+    when 'help'
+      D0xHelp::run
+      
+    when 'exit'
+      exit(1)
+      
+    when 'restart'
+      start
+      
+    when 'targets'
+      D0xTools::bbb_sl 'Potential targets:'
+      D0xTools::bbb_sl $targets.to_s
+      puts''
+      D0xTools::bbb_sl "These may be accessed using the following abbreviations:"
+      D0xTools::bbb_sl $targets_short.to_s
+      puts''
+    
+    else
+      puts 'Command not recognised.'
+    end
+  end
+end
+
+if __FILE__ == $PROGRAM_NAME 
+  main_thread = Thread.new {start}.join
 end
 
 
