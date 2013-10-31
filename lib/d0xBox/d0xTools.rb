@@ -6,7 +6,7 @@ require 'open-uri'
 require 'nokogiri'
 
 
-module D0xWeb
+module D0xTools
 	def self.bbb(s) # bit-by-bit printing
 		s.each_char { |c| putc c; sleep 0.025; STDOUT.flush }
 		print "\n\n"
@@ -98,7 +98,7 @@ module D0xWeb
 
 	# man <- check bbb timers
 	def self.help
-		bbb 'D0xWeb is a collection of tools to catalog and search webpages.'
+		bbb 'D0xTools is a collection of tools to catalog and search webpages.'
 		bbb 'It may be used as a generic starting point for more complex scrapes, ' +
 		'and is often employed as part of more specialised search modules.'
 	end
