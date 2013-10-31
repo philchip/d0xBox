@@ -1,5 +1,5 @@
 require 'rubygems'
-require 'Nokogiri'
+require 'nokogiri'
 require_relative './d0xBox/d0xWeb' # Really? You call that >clean?<
 
 ### MAIN ###
