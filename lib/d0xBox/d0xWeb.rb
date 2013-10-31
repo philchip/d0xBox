@@ -62,8 +62,7 @@ module D0xWeb
 		p.insert(0,'www.') if needs_www
 		p.insert(0,'http://') if needs_http
 		grabbed = Nokogiri::HTML(open(p))
-		
-		grabbed.text if options[:text]
+		grabbed = clean_text(grabbed.text) if options[:text]
 	end
 
 	# get input off user...
@@ -99,25 +98,3 @@ module D0xWeb
 		'and is often employed as part of more specialised search modules.'
 	end
 end
-
-D0xWeb::get_input_page
-=begin DEPRECATED
-lipsum = Nokogiri::HTML(open("http://www.lipsum.com")) 
-
-# grab any titles of page from that HTML using Xpath, 
-# via scanning HTML for <h1> tag
-lipsum.xpath('//h1').each do |node|
-	puts 'Page Title: ' + node.text 
-end
-
-# grab first paragraph from page, remove meaningless babble
-para = lipsum.xpath('//p').first.text # declaration for readability...
-bbb para.gsub('/<>/','') # remove characters, replace with ''
-# sweet unintended effect... seems to be removing tag 
-# along with angle brackets
-
-# para is stored as a string, so let's page_search it...
-page_search(para)
-=end
-
-
