@@ -13,6 +13,11 @@ module D0xWeb
 		sleep(2)
 	end
 	
+	def self.bbb_sl(s)
+		s.each_char { |c| putc c; sleep 0.025; STDOUT.flush }
+		prints "\n"
+	end
+	
 	def self.clean_text(t) # cleans a string of tags
 		t.gsub(/'<>'/,'')
 	end
