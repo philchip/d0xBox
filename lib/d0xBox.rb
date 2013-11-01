@@ -13,7 +13,7 @@ class D0xClient
 	def initialize
 		D0xTools:bbb_sl "New client initialised. \n" #test: check whether escape works with bbb
 		D0xTools:bbb_sl "Targets: #{@targets}."
-		client_thread = Thread.new { client_start(@targets) }.join
+		client_thread = Thread.new { start(@targets) }.join
 	end
 	
 	def start(*targets)
