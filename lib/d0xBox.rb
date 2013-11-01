@@ -51,7 +51,7 @@ def spawn_client(*targets = 'none')
 	else
 		puts 'Invalid target(s). Type \'targets\' for a list of targets to scrape.'
     		spawn_client
-  	end
+	end
 end
 
 def watch_input
