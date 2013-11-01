@@ -88,7 +88,7 @@ module D0xTools
 		end
 		page = gets.chomp
 
-		'Do you want to store this whole page as text? y/N: '
+		'Do you want to store this whole page as text? y/N: ' # BUG: if n, search doesn't function... calling scan on non-string
 		.each_char do |c|
 			putc c
 			sleep 0.025
