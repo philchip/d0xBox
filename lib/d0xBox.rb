@@ -43,7 +43,7 @@ def spawn_client(*targets = 'none')
 	unless $targets.include? targets ||
 	$targets_short.include? targets then
 		target_valid = false
-  	end 
+	end 
   
   
 	if target_valid == true
