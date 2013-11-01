@@ -7,6 +7,11 @@ require 'nokogiri'
 
 
 module D0xTools
+	def self.start
+		bbb_sl 'Page-search module loaded.'
+		get_input_page
+	end
+
 	def self.bbb(s) # bit-by-bit printing
 		s.each_char { |c| putc c; sleep 0.025; STDOUT.flush }
 		print "\n\n"
@@ -23,16 +28,17 @@ module D0xTools
 	end
 	
 
-	def self.page_search(p) # page_search text for a term
-		puts 'Yo. Enter search term: '
+	def self.page_search(p) # search text for a term
+		bbb_sl 'Enter term to search page for: '
 		term = gets.chomp.downcase
-		count_results = p.downcase.scan(term).count
+		count_results = p.scan(term).count
 		result_found = true
 		result_found = false if count_results == 0
 
 		if result_found
-			print "Result found. Occurrences: #{count_results}\n"
-			print 'Search again? y/N: '
+			bbb_sl "Result found. Occurrences: #{count_results}"
+			puts ''
+			bbb_sl 'Search again? y/N: '
 			choice = gets.chomp.downcase
 			if choice == 'y'
 				page_search(p)
@@ -44,7 +50,7 @@ module D0xTools
 			end
 
 		else
-			print 'No result found. Search for another term? y/N: '
+			bbb_sl 'No result found. Search for another term? y/N: '
 			choice = gets.chomp.downcase
 			if choice == 'y'
 				page_search(p)
@@ -68,11 +74,14 @@ module D0xTools
 		p.insert(0,'http://') if needs_http
 		grabbed = Nokogiri::HTML(open(p))
 		grabbed = clean_text(grabbed.text) if options[:text]
+		sleep(1)
+		puts 'DONE'
+		page_search(grabbed)
 	end
 
 	# get input off user...
 	def self.get_input_page
-		'Hi there! Enter page to read: '.each_char do |c|
+		'Enter page to read: '.each_char do |c|
 			putc c
 			sleep 0.025
 			STDOUT.flush
@@ -88,11 +97,11 @@ module D0xTools
 		choice = gets.chomp.downcase
 
 		if choice ==  'y'
-			puts "Storing webpage as text..."
+			bbb_sl "Storing webpage as text..."
 			grab_page(page, text: true)
 		else
+			bbb_sl 'Grabbing page...'
 			grab_page(page)
-			puts 'Page grabbed.'
 		end
 	end
 

@@ -13,17 +13,16 @@ $targets_set = []
 $clients = []
 
 class D0xClient
-	@targets = $targets_set
-	@name = nil
-	
 	def initialize
-		D0xTools.bbb_sl "New client initialised. \n" #test: check whether escape works with bbb
+		D0xTools.bbb_sl "New client initialised."
+    puts ''
+    @targets = $targets_set
 		D0xTools.bbb_sl "Targets: #{@targets}."
+    puts ''
 		client_thread = Thread.new { self.start(@targets) }.join
 	end 
 	
 	def start(*targets)
-		puts 'DEBUG: CLIENT START METHOD CALLED. THREAD 3.'
 		D0xTools.bbb_sl "Please give a name to this search: "
 		@name = gets.chomp
 		$clients << @name
@@ -37,7 +36,7 @@ class D0xClient
 			when 't', 'twitter'
 				# D0xTwit.start
 			when 'w', 'website'
-				# D0xTools.start
+				D0xTools.start
 			when 'i', 'images'
 				# D0xImg.start
       end
@@ -47,7 +46,7 @@ class D0xClient
 	def kill(name)
 		D0xTools.bbb_sl 'Really cancel this search? y/N: '
 		choice = gets.chomp
-		if choice.downcase == self.name
+		if choice.downcase == @name
 			self.garbage_collect
 			D0xTools.bbb_sl 'Search cancelled.'
 		end
@@ -82,7 +81,7 @@ class Main
    		D0xTools.bbb_sl 'Enter target(s): '
    		input = gets.chomp.to_s.downcase!
     else
-      scan_array = $targets.map { |e| e.downcase! }
+      scan_array = $targets.map { |e| e.downcase }
       scan_array << $targets_short.each { |e| e.downcase }
       scan_string = scan_array.join(' ')
       t << x
@@ -91,7 +90,7 @@ class Main
   	target_valid = false unless scan_string.include?(input)
 
   	if target_valid == true
-  		targets = $targets_set
+  		$targets_set = t
   		client = D0xClient.new
   	else
   		puts 'Invalid target(s). Type \'targets\' for a list of targets to scrape.'
@@ -99,7 +98,6 @@ class Main
   end
 
   def watch_input
-  	puts 'DEBUG: INPUT THREAD STARTED. THREAD 2.'
   	loop do
   		case gets.chomp.downcase
 
@@ -110,8 +108,7 @@ class Main
   			exit(1)
 
   		when 'restart'
-        #client_thread.stop
-  			start
+  			start # check for client threads and kill them before this?
 
   		when 'targets'
   			D0xTools.bbb_sl 'Potential targets:'
@@ -122,7 +119,11 @@ class Main
   			puts''
 
       when 'new'
-        spawn_client('facebook')
+        spawn_client('website')
+
+      when 'clients'
+        D0xTools.bbb_sl "Currently running clients: #{$clients}."
+        puts ''
 
   		else
   			puts 'Command not recognised.'
