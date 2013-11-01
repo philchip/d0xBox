@@ -25,62 +25,64 @@ def start
                                                 
   eos
  
-  D0xTools::bbb "        				Not yet implemented(TM)"
-  D0xTools::bbb_sl "Welcome to d0xB0x. Enter start-up command, or type \'help\'."
-  puts''
-  input_thread = Thread.new {watch_input}.join
+  	D0xTools::bbb "        				Not yet implemented(TM)"
+	D0xTools::bbb_sl "Welcome to d0xB0x. Enter start-up command, or type \'help\'."
+  	puts''
+  	input_thread = Thread.new {watch_input}.join
 end
 
 def spawn_client(*targets = 'none')
 	target_valid = true
 	if targets = 'none'
- 	  D0xTools::bbb_sl 'Enter target(s): '
- 	  input = gets.chomp
-  else
-    break	 
-  end
+ 		D0xTools::bbb_sl 'Enter target(s): '
+ 		input = gets.chomp
+	else
+		break	 
+  	end
   
-  unless $targets.include? targets then
-      target_valid = false
-  end 
+  	unless $targets.include? targets ||
+  	$targets_short.include? targets then
+  		target_valid = false
+  	end 
   
-  if target_valid == true
-    client = new D0xClient(*targets)
-  else
-    puts 'Invalid target(s). Type \'targets\' for a list of targets to scrape.'
-    spawn_client
-  end
+  
+	if target_valid == true
+		client = new D0xClient(*targets)
+	else
+		puts 'Invalid target(s). Type \'targets\' for a list of targets to scrape.'
+    		spawn_client
+  	end
 end
 
 def watch_input
-  loop do
-    case gets.chomp.downcase
-    
-    when 'help'
-      D0xHelp::run
-      
-    when 'exit'
-      exit(1)
-      
-    when 'restart'
-      start
-      
-    when 'targets'
-      D0xTools::bbb_sl 'Potential targets:'
-      D0xTools::bbb_sl $targets.to_s
-      puts''
-      D0xTools::bbb_sl "These may be accessed using the following abbreviations:"
-      D0xTools::bbb_sl $targets_short.to_s
-      puts''
-    
-    else
-      puts 'Command not recognised.'
-    end
-  end
+	loop do
+		case gets.chomp.downcase
+
+		when 'help'
+			D0xHelp::run
+
+		when 'exit'
+			exit(1)
+
+		when 'restart'
+			start
+
+		when 'targets'
+			D0xTools::bbb_sl 'Potential targets:'
+			D0xTools::bbb_sl $targets.to_s
+			puts''
+			D0xTools::bbb_sl "These may be accessed using the following abbreviations:"
+			D0xTools::bbb_sl $targets_short.to_s
+			puts''
+
+		else
+			puts 'Command not recognised.'
+		end
+	end
 end
 
 if __FILE__ == $PROGRAM_NAME 
-  main_thread = Thread.new {start}.join
+	main_thread = Thread.new {start}.join
 end
 
 
