@@ -2,10 +2,10 @@ require 'rubygems'
 require 'nokogiri'
 require_relative './d0xBox/d0xTools' # Really? You call that >clean?<
 require_relative './d0xBox/d0xHelp'
-require_relative './d0xB0x/d0xImg'
-require_relative './d0xB0x/d0xGgl'
-require_relative './d0xB0x/d0xFB'
-require_relative './d0xB0x/d0xTwit'
+#require_relative './d0xB0x/d0xImg'
+#require_relative './d0xB0x/d0xGgl'
+#require_relative './d0xB0x/d0xFB'
+#require_relative './d0xB0x/d0xTwit'
 
 $targets = ['Facebook', 'Google', 'Twitter', 'Website', 'Images']
 $targets_short = ['F', 'G', 'T', 'W', 'I']
@@ -40,17 +40,16 @@ class D0xClient
 				# D0xTools::start
 			when 'i', 'images'
 				# D0xImg::start
+      end
 		end
 	end
 	
 	def kill(name)
 		D0xTools::bbb_sl 'Really cancel this search? y/N: '
 		choice = gets.chomp
-		if choice.downcase == self.@name
+		if choice.downcase == self.name
 			self.garbage_collect
 			D0xTools::bbb_sl 'Search cancelled.'
-		else
-			break
 		end
 	end
 end
@@ -76,13 +75,11 @@ def start
 	input_thread = Thread.new { watch_input }.join
 end
 
-def spawn_client(*targets = 'none')
+def spawn_client(*targets)
 	target_valid = true
-	if targets = 'none'
+	if targets == nil
  		D0xTools::bbb_sl 'Enter target(s): '
- 		input = gets.chomp
-	else
-		break	 
+ 		input = gets.chomp 
 	end
   
 	unless ($targets.include? targets) ||
@@ -96,7 +93,6 @@ def spawn_client(*targets = 'none')
 		client = new D0xClient(targets)
 	else
 		puts 'Invalid target(s). Type \'targets\' for a list of targets to scrape.'
-    		spawn_client
 	end
 end
 
@@ -122,6 +118,9 @@ def watch_input
 			D0xTools::bbb_sl $targets_short.to_s
 			puts''
 
+    when 'new'
+      spawn_client
+
 		else
 			puts 'Command not recognised.'
 		end
@@ -131,6 +130,7 @@ end
 if __FILE__ == $PROGRAM_NAME 
 	main_thread = Thread.new { start }.join
 end
+
 
 
 
