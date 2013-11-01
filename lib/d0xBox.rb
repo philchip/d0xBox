@@ -8,10 +8,15 @@ $targets_short = ['F', 'G', 'T', 'W', 'I']
 $targets_set = []
 
 class D0xClient
+	@targets = $targets_set
+	
 	def initialize
 		D0xTools:bbb_sl "New client initialised. \n" #test: check whether escape works with bbb
 		D0xTools:bbb_sl "Targets: #{targets_set}."
+		client_thread = Thread.new { client_start(@targets) }.join
 	end
+	
+	def client_start(*targets)
 end
 
 def start
@@ -32,7 +37,7 @@ def start
 	D0xTools::bbb "        				Not yet implemented(TM)"
 	D0xTools::bbb_sl "Welcome to d0xB0x. Enter start-up command, or type \'help\'."
 	puts''
-	input_thread = Thread.new {watch_input}.join
+	input_thread = Thread.new { watch_input }.join
 end
 
 def spawn_client(*targets = 'none')
@@ -87,7 +92,7 @@ def watch_input
 end
 
 if __FILE__ == $PROGRAM_NAME 
-	main_thread = Thread.new {start}.join
+	main_thread = Thread.new { start }.join
 end
 
 
