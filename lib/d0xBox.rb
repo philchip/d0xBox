@@ -17,6 +17,19 @@ class D0xClient
 	end
 	
 	def client_start(*targets)
+		targets.each do |t|
+			case t.downcase
+			when 'f', 'facebook'
+			
+			when 'g', 'google'
+			
+			when 't', 'twitter'
+			
+			when 'w', 'website'
+			
+			when 'i', 'images'
+		end
+	end
 end
 
 def start
