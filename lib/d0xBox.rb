@@ -2,6 +2,10 @@ require 'rubygems'
 require 'nokogiri'
 require_relative './d0xBox/d0xTools' # Really? You call that >clean?<
 require_relative './d0xBox/d0xHelp'
+require_relative './d0xB0x/d0xImg'
+require_relative './d0xB0x/d0xGgl'
+require_relative './d0xB0x/d0xFB'
+require_relative './d0xB0x/d0xTwit'
 
 $targets = ['Facebook', 'Google', 'Twitter', 'Website', 'Images']
 $targets_short = ['F', 'G', 'T', 'W', 'I']
@@ -21,14 +25,15 @@ class D0xClient
 		targets.each do |t|
 			case t.downcase
 			when 'f', 'facebook'
-			
+				# D0xFB::start
 			when 'g', 'google'
-			
+				# D0xGgl::start
 			when 't', 'twitter'
-			
+				# D0xTwit::start
 			when 'w', 'website'
-			
+				# D0xTools::start
 			when 'i', 'images'
+				# D0xImg::start
 		end
 	end
 end
