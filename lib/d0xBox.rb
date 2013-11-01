@@ -17,7 +17,7 @@ class D0xClient
 	end
 	
 	def start(*targets)
-		puts 'DEBUG: CLIENT START METHOD CALLED'
+		puts 'DEBUG: CLIENT START METHOD CALLED. THREAD 3.'
 		targets.each do |t|
 			case t.downcase
 			when 'f', 'facebook'
@@ -79,6 +79,7 @@ def spawn_client(*targets = 'none')
 end
 
 def watch_input
+	puts 'DEBUG: INPUT THREAD STARTED. THREAD 2.'
 	loop do
 		case gets.chomp.downcase
 
