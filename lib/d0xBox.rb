@@ -5,9 +5,13 @@ require_relative './d0xBox/d0xHelp'
 
 $targets = ['Facebook', 'Google', 'Twitter', 'Website', 'Images']
 $targets_short = ['F', 'G', 'T', 'W', 'I']
+$targets_set = []
 
 class D0xClient
-	
+	def initialize
+		D0xTools:bbb_sl "New client initialised. \n" #test: check whether escape works with bbb
+		D0xTools:bbb_sl "Targets: #{targets_set}."
+	end
 end
 
 def start
@@ -47,7 +51,8 @@ def spawn_client(*targets = 'none')
   
   
 	if target_valid == true
-		client = new D0xClient(*targets)
+		$targets_set = targets
+		client = new D0xClient(targets)
 	else
 		puts 'Invalid target(s). Type \'targets\' for a list of targets to scrape.'
     		spawn_client
