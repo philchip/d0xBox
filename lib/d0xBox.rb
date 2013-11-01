@@ -76,22 +76,23 @@ class Main
   	input_thread = Thread.new { watch_input }.join
   end
 
-  def spawn_client(*targets)
+  def spawn_client(x = 'default', *t)
   	target_valid = true
-  	if targets == nil
+  	if x == 'default'
    		D0xTools.bbb_sl 'Enter target(s): '
-   		input = gets.chomp 
-  	end
-    
-  	unless ($targets.include? targets) ||
-  	($targets_short.include? targets) then
-  		target_valid = false
-  	end 
-    
-    
+   		input = gets.chomp.to_s.downcase!
+    else
+      scan_array = $targets.map { |e| e.downcase! }
+      scan_array << $targets_short.each { |e| e.downcase }
+      scan_string = scan_array.join(' ')
+      t << x
+      input = t.join(' ')
+    end
+  	target_valid = false unless scan_string.include?(input)
+
   	if target_valid == true
-  		$targets_set = targets
-  		client = new D0xClient(targets)
+  		targets = $targets_set
+  		client = D0xClient.new
   	else
   		puts 'Invalid target(s). Type \'targets\' for a list of targets to scrape.'
   	end
@@ -109,6 +110,7 @@ class Main
   			exit(1)
 
   		when 'restart'
+        #client_thread.stop
   			start
 
   		when 'targets'
@@ -120,7 +122,7 @@ class Main
   			puts''
 
       when 'new'
-        spawn_client
+        spawn_client('facebook')
 
   		else
   			puts 'Command not recognised.'
