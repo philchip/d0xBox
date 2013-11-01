@@ -6,6 +6,10 @@ require_relative './d0xBox/d0xHelp'
 $targets = ['Facebook', 'Google', 'Twitter', 'Website', 'Images']
 $targets_short = ['F', 'G', 'T', 'W', 'I']
 
+class D0xClient
+	
+end
+
 def start
 	puts <<-eos
 
@@ -19,36 +23,26 @@ def start
 	,d8,   ,d8b,,dP  ,dP"Y8,  88_____,d8',dP  ,dP"Y8,  
 	P"Y8888P"`Y88"  dP"   "Y888888888P"  8"  dP"   "Y8   V0.1                                           
                                                 
-	eos
+  eos
  
-
   D0xTools::bbb "        				Not yet implemented(TM)"
   D0xTools::bbb_sl "Welcome to d0xB0x. Enter start-up command, or type \'help\'."
   puts''
   input_thread = Thread.new {watch_input}.join
-  
-  print'DEBUG: QUITTING'
 end
-=begin MOVE ME TO DEDICATED d0xHelp.rb
-def help(s)
-  case s
-  when 'self'
-    puts 'PRINT GENERAL HELPFILE'
-  when 'other methods'
-    puts 'METHOD SPECIFIC HELPFILES'
-  else
-    puts 'Unknown help parameter. Usage: help(command) or help'
-  end
-end
-=end
 
-def spawn_client
-  D0xTools::bbb_sl 'Enter target(s): '
-  targets = gets.chomp
+def spawn_client(*targets = 'none')
+	target_valid = true
+	if targets = 'none'
+ 	  D0xTools::bbb_sl 'Enter target(s): '
+ 	  input = gets.chomp
+  else
+    break	 
+  end
   
   unless $targets.include? targets then
-    target_valid = false
-  end
+      target_valid = false
+  end 
   
   if target_valid == true
     client = new D0xClient(*targets)
