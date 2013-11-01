@@ -10,6 +10,7 @@ require_relative './d0xB0x/d0xTwit'
 $targets = ['Facebook', 'Google', 'Twitter', 'Website', 'Images']
 $targets_short = ['F', 'G', 'T', 'W', 'I']
 $targets_set = []
+$clients = []
 
 class D0xClient
 	@targets = $targets_set
@@ -19,14 +20,15 @@ class D0xClient
 		D0xTools::bbb_sl "New client initialised. \n" #test: check whether escape works with bbb
 		D0xTools::bbb_sl "Targets: #{@targets}."
 		client_thread = Thread.new { self.start(@targets) }.join
-	end
+	end 
 	
 	def start(*targets)
 		puts 'DEBUG: CLIENT START METHOD CALLED. THREAD 3.'
 		D0xTools::bbb_sl "Please give a name to this search: "
 		@name = gets.chomp
+		$clients << @name
 		
-		targets.each do |t|
+		@targets.each do |t|
 			case t.downcase
 			when 'f', 'facebook'
 				# D0xFB::start
@@ -46,6 +48,7 @@ class D0xClient
 		choice = gets.chomp
 		if choice.downcase == self.@name
 			self.garbage_collect
+			D0xTools::bbb_sl 'Search cancelled.'
 		else
 			break
 		end
@@ -82,8 +85,8 @@ def spawn_client(*targets = 'none')
 		break	 
 	end
   
-	unless $targets.include? targets ||
-	$targets_short.include? targets then
+	unless ($targets.include? targets) ||
+	($targets_short.include? targets) then
 		target_valid = false
 	end 
   
