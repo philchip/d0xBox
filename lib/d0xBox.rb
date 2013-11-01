@@ -16,7 +16,7 @@ class D0xClient
 		client_thread = Thread.new { client_start(@targets) }.join
 	end
 	
-	def client_start(*targets)
+	def start(*targets)
 		targets.each do |t|
 			case t.downcase
 			when 'f', 'facebook'
