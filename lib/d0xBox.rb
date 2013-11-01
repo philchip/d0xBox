@@ -38,7 +38,7 @@ def spawn_client(*targets = 'none')
  		input = gets.chomp
 	else
 		break	 
-  	end
+	end
   
 	unless $targets.include? targets ||
 	$targets_short.include? targets then
