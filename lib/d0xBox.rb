@@ -27,8 +27,8 @@ def start
  
 	D0xTools::bbb "        				Not yet implemented(TM)"
 	D0xTools::bbb_sl "Welcome to d0xB0x. Enter start-up command, or type \'help\'."
-  	puts''
-  	input_thread = Thread.new {watch_input}.join
+	puts''
+	input_thread = Thread.new {watch_input}.join
 end
 
 def spawn_client(*targets = 'none')
@@ -40,9 +40,9 @@ def spawn_client(*targets = 'none')
 		break	 
   	end
   
-  	unless $targets.include? targets ||
-  	$targets_short.include? targets then
-  		target_valid = false
+	unless $targets.include? targets ||
+	$targets_short.include? targets then
+		target_valid = false
   	end 
   
   
