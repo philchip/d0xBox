@@ -17,6 +17,7 @@ class D0xClient
 	end
 	
 	def start(*targets)
+		puts 'DEBUG: CLIENT START METHOD CALLED'
 		targets.each do |t|
 			case t.downcase
 			when 'f', 'facebook'
